@@ -1,0 +1,433 @@
+- [ ] Azure Fundamentals
+    - [ ] Core Concepts
+        - [ ] Cloud Models
+            - [ ] IaaS vs PaaS vs SaaS
+            - [ ] Public vs Private vs Hybrid
+        - [ ] Azure Global Infrastructure
+            - [ ] Regions & Availability Zones
+            - [ ] Resource Groups
+        - [ ] Subscriptions
+            - [ ] Billing & Access Boundaries
+            - [ ] Subscription Management
+    - [ ] Core Services Overview
+        - [ ] Compute Services
+            - [ ] VMs
+            - [ ] App Services
+        - [ ] Networking Services
+            - [ ] VNets
+            - [ ] Load Balancers
+        - [ ] Storage Services
+            - [ ] Blob Storage
+            - [ ] File Shares
+    - [ ] SLAs & Lifecycle
+        - [ ] Service-Level Agreements
+            - [ ] SLA Calculations
+            - [ ] Composite SLAs
+        - [ ] Service Lifecycle
+            - [ ] Preview vs GA
+            - [ ] Deprecation
+
+- [ ] Identity & Security (Entra ID)
+    - [ ] Identity Management
+        - [ ] Users & Groups
+            - [ ] Group Types
+            - [ ] Dynamic Groups
+        - [ ] Roles & RBAC
+            - [ ] Built-in Roles
+            - [ ] Custom Roles
+    - [ ] Authentication
+        - [ ] MFA
+            - [ ] Methods
+            - [ ] Policies
+        - [ ] Conditional Access
+            - [ ] User Conditions
+            - [ ] Device Conditions
+    - [ ] Privileged Identity Management (PIM)
+        - [ ] Role Assignment
+            - [ ] Eligible Roles
+            - [ ] Active Roles
+        - [ ] Just-In-Time Access
+            - [ ] Approval Workflow
+            - [ ] Session Controls
+    - [ ] Security Operations
+        - [ ] Identity Protection
+            - [ ] Risk Policies
+            - [ ] Risk Detection
+        - [ ] Zero Trust
+            - [ ] Principles
+            - [ ] Implementation
+
+- [ ] Governance & Compliance
+    - [ ] Management Groups
+        - [ ] Hierarchy Design
+            - [ ] Root Management Group
+            - [ ] Landing Zones
+        - [ ] Policy Inheritance
+            - [ ] Constraints
+            - [ ] Exemptions
+    - [ ] Azure Policy
+        - [ ] Policy Definitions
+            - [ ] Built-in Policies
+            - [ ] Custom Policies
+        - [ ] Initiatives
+            - [ ] Compliance States
+            - [ ] Assignment Scopes
+    - [ ] Azure Blueprints
+        - [ ] Artifact Types
+            - [ ] RBAC
+            - [ ] Policies
+        - [ ] Versioning
+            - [ ] Locking
+            - [ ] Publishing
+    - [ ] Tagging Strategy
+        - [ ] Naming Conventions
+            - [ ] Resource Tagging
+            - [ ] Cost Allocation Tags
+        - [ ] Automation
+            - [ ] Tag Enforcement
+            - [ ] Policies for Tags
+
+- [ ] Networking
+    - [ ] Virtual Networks
+        - [ ] Subnets
+            - [ ] Address Spaces
+            - [ ] Service Endpoints
+        - [ ] Peering
+            - [ ] VNet-to-VNet
+            - [ ] Global Peering
+    - [ ] Network Security
+        - [ ] NSG
+            - [ ] Inbound Rules
+            - [ ] Outbound Rules
+        - [ ] Azure Firewall
+            - [ ] Rules Engine
+            - [ ] Threat Intelligence
+    - [ ] Connectivity
+        - [ ] VPN Gateway
+            - [ ] Site-to-Site
+            - [ ] Point-to-Site
+        - [ ] ExpressRoute
+            - [ ] Circuits
+            - [ ] Peering Options
+    - [ ] Load Balancing
+        - [ ] Azure Load Balancer
+            - [ ] Health Probes
+            - [ ] Backend Pools
+        - [ ] Application Gateway
+            - [ ] WAF
+            - [ ] Routing Rules
+
+- [ ] Compute
+    - [ ] Virtual Machines
+        - [ ] VM Sizing
+            - [ ] Series Types
+            - [ ] Workload Mapping
+        - [ ] Availability
+            - [ ] Availability Sets
+            - [ ] Availability Zones
+    - [ ] App Services
+        - [ ] App Service Plans
+            - [ ] Tier Selection
+            - [ ] Scaling
+        - [ ] Deployment Slots
+            - [ ] Swap
+            - [ ] Testing
+    - [ ] Azure Functions
+        - [ ] Triggers
+            - [ ] Timer
+            - [ ] HTTP
+        - [ ] Hosting Plans
+            - [ ] Consumption
+            - [ ] Premium
+
+- [ ] Storage
+    - [ ] Accounts & Access
+        - [ ] Storage Types
+            - [ ] Standard vs Premium
+            - [ ] LRS vs GRS
+        - [ ] Access Keys
+            - [ ] SAS Tokens
+            - [ ] Shared Keys
+    - [ ] Blob Storage
+        - [ ] Containers
+            - [ ] Permissions
+            - [ ] Immutability Policies
+        - [ ] Lifecycle Management
+            - [ ] Archive Tiering
+            - [ ] Rules
+    - [ ] File Shares
+        - [ ] SMB Access
+            - [ ] AD Integration
+            - [ ] Mounting
+        - [ ] NFS
+            - [ ] Permissions
+            - [ ] Performance Tiers
+
+- [ ] Databases
+    - [ ] Azure SQL
+        - [ ] Deployment Models
+            - [ ] Managed Instance
+            - [ ] Single Database
+        - [ ] Performance Tiers
+            - [ ] DTU
+            - [ ] vCore
+    - [ ] Cosmos DB
+        - [ ] APIs
+            - [ ] SQL Core
+            - [ ] MongoDB
+        - [ ] Partitioning
+            - [ ] Keys
+            - [ ] Throughput
+    - [ ] PostgreSQL/MySQL
+        - [ ] Flexible Server
+            - [ ] High Availability
+            - [ ] Scaling
+        - [ ] Backup
+            - [ ] PITR
+            - [ ] Retention
+
+- [ ] Serverless
+    - [ ] Azure Functions
+        - [ ] Durable Functions
+            - [ ] Orchestration
+            - [ ] Activity Functions
+        - [ ] Integrations
+            - [ ] Event Grid
+            - [ ] Event Hub
+    - [ ] Logic Apps
+        - [ ] Connectors
+            - [ ] Standard
+            - [ ] Enterprise
+        - [ ] Workflows
+            - [ ] State Management
+            - [ ] Error Handling
+
+- [ ] API & Integration Services
+    - [ ] API Management
+        - [ ] API Gateway
+            - [ ] Policies
+            - [ ] Versioning
+        - [ ] Developer Portal
+            - [ ] Customization
+            - [ ] Access Control
+    - [ ] Event Grid
+        - [ ] Topics
+            - [ ] Custom Topics
+            - [ ] System Topics
+        - [ ] Subscriptions
+            - [ ] Filters
+            - [ ] Delivery
+    - [ ] Event Hub
+        - [ ] Partitions
+            - [ ] Scaling
+            - [ ] Retention
+        - [ ] Capture
+            - [ ] Storage Integration
+            - [ ] Batch Settings
+
+- [ ] Containers & Kubernetes (AKS)
+    - [ ] AKS Core
+        - [ ] Node Pools
+            - [ ] System Nodes
+            - [ ] User Nodes
+        - [ ] Cluster Networking
+            - [ ] Kubenet
+            - [ ] CNI
+    - [ ] Workload Deployment
+        - [ ] Pods
+            - [ ] Probes
+            - [ ] Limits & Requests
+        - [ ] Ingress Controllers
+            - [ ] NGINX
+            - [ ] AGIC
+    - [ ] Security
+        - [ ] Azure AD Integration
+            - [ ] RBAC
+            - [ ] Identity Sync
+        - [ ] Secrets
+            - [ ] Key Vault Integration
+            - [ ] CSI Driver
+
+- [ ] DevOps & IaC
+    - [ ] Terraform
+        - [ ] State Management
+            - [ ] Remote State
+            - [ ] Locking
+        - [ ] Modules
+            - [ ] Standardization
+            - [ ] Reuse
+    - [ ] Bicep
+        - [ ] Modules
+            - [ ] Composition
+            - [ ] Parameterization
+        - [ ] Deployment
+            - [ ] CLI
+            - [ ] GitHub Actions
+    - [ ] Azure DevOps
+        - [ ] Repos
+            - [ ] Branching Strategy
+            - [ ] Policies
+        - [ ] Pipelines
+            - [ ] YAML Pipelines
+            - [ ] Release Pipelines
+    - [ ] GitHub Actions
+        - [ ] Runners
+            - [ ] Self-hosted
+            - [ ] GitHub-hosted
+        - [ ] Workflows
+            - [ ] Triggers
+            - [ ] Secrets
+
+- [ ] Monitoring & Observability
+    - [ ] Azure Monitor
+        - [ ] Metrics
+            - [ ] Alerts
+            - [ ] Dashboards
+        - [ ] Logs
+            - [ ] Log Analytics
+            - [ ] KQL Queries
+    - [ ] Application Insights
+        - [ ] Distributed Tracing
+            - [ ] Correlation
+            - [ ] Dependency Tracking
+        - [ ] Availability Tests
+            - [ ] Ping Test
+            - [ ] Multi-step Test
+    - [ ] Alerting
+        - [ ] Action Groups
+            - [ ] Email/SMS
+            - [ ] Webhooks
+        - [ ] Alert Rules
+            - [ ] Static Thresholds
+            - [ ] Dynamic Thresholds
+
+- [ ] Cost Optimization & FinOps
+    - [ ] Cost Analysis
+        - [ ] Budgets
+            - [ ] Alerts
+            - [ ] Thresholds
+        - [ ] Forecasting
+            - [ ] Usage Trends
+            - [ ] Resource Mapping
+    - [ ] Optimization
+        - [ ] Reserved Instances
+            - [ ] Commitments
+            - [ ] Savings
+        - [ ] Autoscaling
+            - [ ] Scale Out Rules
+            - [ ] Schedule-Based Scaling
+
+- [ ] Data Engineering
+    - [ ] Azure Data Factory
+        - [ ] Pipelines
+            - [ ] Activities
+            - [ ] Triggers
+        - [ ] Integration Runtimes
+            - [ ] Auto-Resolve
+            - [ ] Self-hosted
+    - [ ] Synapse Analytics
+        - [ ] SQL Pools
+            - [ ] Dedicated
+            - [ ] Serverless
+        - [ ] Pipelines
+            - [ ] Data Flows
+            - [ ] Orchestration
+    - [ ] Databricks
+        - [ ] Clusters
+            - [ ] Interactive
+            - [ ] Job Clusters
+        - [ ] Notebooks
+            - [ ] Python
+            - [ ] Spark
+    - [ ] Fabric
+        - [ ] Lakehouse
+            - [ ] OneLake
+            - [ ] Delta Tables
+        - [ ] Pipelines
+            - [ ] Dataflows
+            - [ ] Real-time
+
+- [ ] AI/ML & Cognitive Services
+    - [ ] Azure Cognitive Services
+        - [ ] Vision
+            - [ ] OCR
+            - [ ] Face API
+        - [ ] Language
+            - [ ] Translation
+            - [ ] Text Analytics
+    - [ ] Azure Machine Learning
+        - [ ] Workspaces
+            - [ ] Compute Targets
+            - [ ] Datastores
+        - [ ] Model Deployment
+            - [ ] Endpoints
+            - [ ] Monitoring
+
+- [ ] Migration & Hybrid
+    - [ ] Azure Migrate
+        - [ ] Assessments
+            - [ ] Server Discovery
+            - [ ] Application Dependency
+        - [ ] Migrations
+            - [ ] Agent-based
+            - [ ] Agentless
+    - [ ] Azure Site Recovery
+        - [ ] Replication
+            - [ ] Failover
+            - [ ] Failback
+        - [ ] DR Strategy
+            - [ ] Runbooks
+            - [ ] Testing
+    - [ ] Azure Arc
+        - [ ] Servers
+            - [ ] Connected Machine Agent
+            - [ ] Governance
+        - [ ] Kubernetes
+            - [ ] Extensions
+            - [ ] GitOps
+
+- [ ] Enterprise Architecture
+    - [ ] Landing Zones
+        - [ ] Platform Setup
+            - [ ] Identity
+            - [ ] Networking
+        - [ ] Application Zones
+            - [ ] Workload Structure
+            - [ ] Governance Controls
+    - [ ] Architecture Patterns
+        - [ ] Microservices
+            - [ ] API Gateway
+            - [ ] Service Mesh
+        - [ ] Event-driven
+            - [ ] Event Streaming
+            - [ ] Event Choreography
+    - [ ] Well-Architected Framework
+        - [ ] Cost Optimization
+            - [ ] Resource Utilization
+            - [ ] Waste Reduction
+        - [ ] Operational Excellence
+            - [ ] Automation
+            - [ ] DevOps
+
+- [ ] High Availability, DR & Scalability Patterns
+    - [ ] Availability
+        - [ ] Multi-region Deployments
+            - [ ] Active/Passive
+            - [ ] Active/Active
+        - [ ] Zonal Redundancy
+            - [ ] Zone-aware Services
+            - [ ] Zone-redundant Architectures
+    - [ ] Disaster Recovery
+        - [ ] RTO/RPO Planning
+            - [ ] Backup Strategies
+            - [ ] Cross-region Replication
+        - [ ] Failover Policies
+            - [ ] Application Failover
+            - [ ] Database Failover
+    - [ ] Scalability
+        - [ ] Vertical Scaling
+            - [ ] VM Resize
+            - [ ] DB Scaling
+        - [ ] Horizontal Scaling
+            - [ ] Auto Scale Rules
+            - [ ] Load Balancing
