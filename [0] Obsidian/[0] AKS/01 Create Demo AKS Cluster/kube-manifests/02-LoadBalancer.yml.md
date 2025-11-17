@@ -1,0 +1,18 @@
+
+[[Create AKS Cluster]]
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp1-loadbalancer
+  labels: 
+    app: myapp1
+spec:
+  type: LoadBalancer 
+  selector:
+    app: myapp1
+  ports: 
+    - port: 80
+      targetPort: 80
+```

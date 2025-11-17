@@ -1,0 +1,217 @@
+{
+  "main": {
+    "id": "3d6ea36c864a7359",
+    "type": "split",
+    "children": [
+      {
+        "id": "d6cf60b7fbd335b9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f0859db85a645d0b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 02 01 YAML Basics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03 02 01 YAML Basics"
+            }
+          },
+          {
+            "id": "6005014d9e69f2b9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03 01 Kubernetes Fundaments - Imperative.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "03 01 Kubernetes Fundaments - Imperative"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "140aabd8f2a72d66",
+    "type": "split",
+    "children": [
+      {
+        "id": "2c08b3ce19eff53d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "87a7e9aad618d301",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5c9cdc1a2fea1f70",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a04670ee12aedcdc",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 250.5
+  },
+  "right": {
+    "id": "93c842e7993e5da3",
+    "type": "split",
+    "children": [
+      {
+        "id": "bb42d1fc3affdb1d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "879a824557f7524f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "03 02 01 YAML Basics.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 03 02 01 YAML Basics"
+            }
+          },
+          {
+            "id": "06595f9b47754e92",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "03 02 01 YAML Basics.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 03 02 01 YAML Basics"
+            }
+          },
+          {
+            "id": "173a57e453888aab",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "5c13f34bf82229da",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "03 02 01 YAML Basics.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 03 02 01 YAML Basics"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "f0859db85a645d0b",
+  "lastOpenFiles": [
+    "03 02 Kubernetes Fundamentals - Declarative.md",
+    "00 Index.md",
+    "03 02 01 YAML Basics.md",
+    "03 02 01 Sample YAML File.md",
+    "03 01 Kubernetes Fundaments - Imperative.md",
+    "03 01 04 Kubernetes - Services.md",
+    "03 01 03 Kubernetes - Deployment.md",
+    "03 01 03 07 Pause & Resume Deployments.md",
+    "03 01 03 04 Update Deployment.md",
+    "03 01 03 03 Expose Deployment as a Service.md",
+    "03 01 03 02 Scale the Deployment.md",
+    "03 01 03 06 Rolling Restarts.md",
+    "03 01 03 05 Rollback Deployment.md",
+    "03 01 03 01 Create Deployment.md",
+    "03 01 02 Kubernetes - ReplicaSets.md",
+    "Untitled.md",
+    "01 Create Demo AKS Cluster/kube-manifests/02-LoadBalancer.yml.md",
+    "01 Create Demo AKS Cluster/kube-manifests/01-Deployment.yml.md",
+    "03 01 02 ReplicaSets Demo File.md",
+    "03 01 01 Kubernetes - PODs.md",
+    "create a link.md",
+    "01 Create Demo AKS Cluster/Create AKS Cluster.md",
+    "01 Create Demo AKS Cluster/kube-manifests",
+    "03 01 Kubernetes - PODs.md",
+    "Welcome.md",
+    "03 Kubernetes Fundaments",
+    "01 Create Demo AKS Cluster/Untitled.md",
+    "01 Create Demo AKS Cluster"
+  ]
+}
