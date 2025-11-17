@@ -1,0 +1,130 @@
+### Azure CLI ###
+
+## Creating New Resource Group
+az group create --location "central india" --name "staging-grp"
+az group create --location "central india" --name "staging-grp" --verbose
+
+## Creating Virtual Network
+az network vnet create --name "vnet" --resource-group "staging-grp" --address-prefixes 10.0.0.0/16 --subnet-name "SubnetA"
+## adding subnet to existing virtual network
+az network vnet subnet create -n "SubnetB" -g "staging-grp" --address-prefixes 10.0.1.0/24 --vnet-name "vnet"
+
+
+### QuickStart Template VM Deploayment
+
+#Create a resource group
+resourcegroup="myResourceGroupCLI"
+location="westus3"
+
+az group create --name $resourcegroup --location $location
+#Create virtual machine
+vmname="myVM"
+username="azureuser"
+
+az vm create \
+ --resource-group $resourcegroup \
+ --name $vmname \
+ --image Win2022AzureEditionCore \
+ --public-ip-sku Standard \
+ --admin-username $username
+
+#Install web server
+az vm run-command invoke -g $resourcegroup \
+-n $vmname \
+--command-id RunPowerShellScript \
+--scripts "Install-WindowsFeature -name Web-Server -IncludeManagementTools"
+
+#Open port 80 for web traffic
+az vm open-port --port 80 --resource-group $resourcegroup --name $vmname
+
+#Clean up resources
+az group delete --name $resourcegroup
+
+## Quick VM Deployment
+az vm create \
+-g "staging-grp" \
+-n "appvm" \
+--image Win2022AzureEditionCore \
+--public-ip-sku Standard \
+--admin-username "vmadmin"
+
+
+
+## Create virtual machines in a scale set using Azure CLI
+
+# Define environment variables
+export RANDOM_ID="$(openssl rand -hex 3)"
+export MY_RESOURCE_GROUP_NAME="myVMSSResourceGroup$RANDOM_ID"
+export REGION=EastUS
+export MY_VMSS_NAME="myVMSS$RANDOM_ID"
+export MY_USERNAME=azureuser
+export MY_VM_IMAGE="Ubuntu2204"
+export MY_VNET_NAME="myVNet$RANDOM_ID"
+export NETWORK_PREFIX="$(($RANDOM % 254 + 1))"
+export MY_VNET_PREFIX="10.$NETWORK_PREFIX.0.0/16"
+export MY_VM_SN_NAME="myVMSN$RANDOM_ID"
+export MY_VM_SN_PREFIX="10.$NETWORK_PREFIX.0.0/24"
+export MY_APPGW_SN_NAME="myAPPGWSN$RANDOM_ID"
+export MY_APPGW_SN_PREFIX="10.$NETWORK_PREFIX.1.0/24"
+export MY_APPGW_NAME="myAPPGW$RANDOM_ID"
+export MY_APPGW_PUBLIC_IP_NAME="myAPPGWPublicIP$RANDOM_ID"
+
+
+# Create a resource group
+az group create --name $MY_RESOURCE_GROUP_NAME --location $REGION -o JSON
+
+# Create network resources
+az network vnet create  --name $MY_VNET_NAME  --resource-group $MY_RESOURCE_GROUP_NAME \
+--location $REGION  --address-prefix $MY_VNET_PREFIX  --subnet-name $MY_VM_SN_NAME --subnet-prefix $MY_VM_SN_PREFIX -o JSON
+
+## Create Application Gateway resources
+az network vnet subnet create  --name $MY_APPGW_SN_NAME  \
+--resource-group $MY_RESOURCE_GROUP_NAME --vnet-name  $MY_VNET_NAME --address-prefix  $MY_APPGW_SN_PREFIX -o JSON
+
+#command creates a standard, zone redundant, static, public IPv4 in your resource group
+az network public-ip create  --resource-group $MY_RESOURCE_GROUP_NAME \
+--name $MY_APPGW_PUBLIC_IP_NAME --sku Standard   --location $REGION  --allocation-method static --version IPv4 --zone 1 2 3 -o JSON
+
+#creates a zone redundant Application Gateway with Standard_v2 SKU and enables Http communication for the Application Gateway
+az network application-gateway create   --name $MY_APPGW_NAME --location $REGION \
+--resource-group $MY_RESOURCE_GROUP_NAME --vnet-name $MY_VNET_NAME --subnet $MY_APPGW_SN_NAME \
+--capacity 2  --zones 1 2 3 --sku Standard_v2   --http-settings-cookie-based-affinity Disabled   \
+--frontend-port 80 --http-settings-port 80   --http-settings-protocol Http --public-ip-address $MY_APPGW_PUBLIC_IP_NAME --priority 1001 -o JSON
+
+
+## Create a Virtual Machine Scale Set
+az vmss create --name $MY_VMSS_NAME \
+--resource-group $MY_RESOURCE_GROUP_NAME --image $MY_VM_IMAGE \
+--admin-username $MY_USERNAME --generate-ssh-keys --public-ip-per-vm \
+--orchestration-mode Uniform --instance-count 2 --zones 1 2 3 \
+--vnet-name $MY_VNET_NAME --subnet $MY_VM_SN_NAME --vm-sku Standard_DS2_v2 \
+--upgrade-policy-mode Automatic --app-gateway $MY_APPGW_NAME \
+--backend-pool-name appGatewayBackendPool -o JSON
+
+
+
+# Install ngnix with Virtual Machine Scale Sets extensions
+az vmss extension set --publisher Microsoft.Azure.Extensions \
+--version 2.0  --name CustomScript --resource-group $MY_RESOURCE_GROUP_NAME \
+--vmss-name $MY_VMSS_NAME \
+--settings '{ "fileUris": ["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/automate_nginx.sh"], "commandToExecute": "./automate_nginx.sh" }' \
+-o JSON
+
+
+
+# Define an autoscale profile
+az monitor autoscale create --resource-group $MY_RESOURCE_GROUP_NAME --resource  $MY_VMSS_NAME --resource-type Microsoft.Compute/virtualMachineScaleSets --name autoscale --min-count 2 --max-count 10 --count 2
+
+# Create a rule to autoscale out
+az monitor autoscale rule create --resource-group $MY_RESOURCE_GROUP_NAME --autoscale-name autoscale --condition "Percentage CPU > 70 avg 5m" --scale out 3
+
+# Create a rule to autoscale in
+az monitor autoscale rule create --resource-group  $MY_RESOURCE_GROUP_NAME --autoscale-name autoscale --condition "Percentage CPU < 30 avg 5m" --scale in 1
+
+# Test the page
+az network public-ip show --resource-group $MY_RESOURCE_GROUP_NAME --name $MY_APPGW_PUBLIC_IP_NAME --query [ipAddress]  --output tsv
+
+# Clean up resources
+az group delete
+
+
