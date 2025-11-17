@@ -1,0 +1,8 @@
+Azure Lab URLS
+
+https://microsoftlearning.github.io/AZ-104-MicrosoftAzureAdministrator/
+https://microsoftlearning.github.io/AZ500-AzureSecurityTechnologies/
+https://microsoftlearning.github.io/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions/
+https://microsoftlearning.github.io/AZ-305-DesigningMicrosoftAzureInfrastructureSolutions/
+https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/
+
