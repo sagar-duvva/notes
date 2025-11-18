@@ -1,8 +1,0 @@
-views:
-  - type: cards
-    name: Table
-    filters:
-      and:
-        - file.name == "YT"
-    image: note.coverUrl
-    imageFit: contain
