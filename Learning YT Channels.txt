@@ -52,3 +52,10 @@ edureka!		https://www.youtube.com/@edurekaIN		||	Simplilearn		https://www.youtub
 
 
 
+==== IMP Learning Videos
+
+
+Azure Bicep | Azure Bicep Crash Course - Step by Step - All in One | https://www.youtube.com/watch?v=mKG5d9rnaYg 
+Azure Functions | Azure Functions in 10 Minutes – Flow Explained | https://www.youtube.com/watch?v=IiUH6NonZW4&t=311s
+
+
