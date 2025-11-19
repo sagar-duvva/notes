@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do List</title>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form method="POST" action="/add">
+        <input type="text" name="task" placeholder="Add new task" required>
+        <button type="submit">Add</button>
+    </form>
+    <ul>
+        {% for todo in todos %}
+        <li>
+            <input type="checkbox" {% if todo[2] %} checked {% endif %} onclick="window.location.href='/complete/{{ todo[0] }}'">
+            <span style="{% if todo[2] %} text-decoration: line-through; {% endif %}">{{ todo[1] }}</span>
+            <a href="/delete/{{ todo[0] }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
