@@ -1,0 +1,234 @@
+============
+>> NGINX SSL CONFIG -- LINUX  <<
+============
+
+1. sudo apt update && sudo apt upgrade -y
+2. sudo apt install -y nginx
+3. sudo systemctl status nginx
+4. sudo mkdir /var/www/example.com
+5. sudo cp /var/www/html/index.nginx-debian.html /var/www/example.com/index.html
+6. sudo ls -al /var/www/html/
+7. sudo ls -al /var/www/example.com/
+8. sudo vim /etc/nginx/sites-available/default
+
+================================================================================
+================================================================================
+
+====================================
+==== add below config in default ===
+====================================
+
+server {
+#       listen 80;
+#		listen [::]:80;
+#		server_name example.com;
+
+#       listen 443 ssl default_server;
+#       listen [::]:443 ssl default_server;
+#       server_name example.com;
+
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
+
+#       root /var/www/example.com;
+        root /var/www/html;
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+================================================================================
+================================================================================
+
+==================
+=== config end ===
+==================
+
+9. sudo chown -R $USER:$USER /var/www/example.com/
+10. sudo chmod -R 755 /var/www/example.com/
+
+11. sudo nginx -t #check the config
+12. sudo nginx -s reload #reloading config into nginx
+
+13. sudo systemctl reload nginx
+14. sudo systemctl status nginx
+
+================================================================================
+================================================================================
+
+############
+#SSL Config#
+############
+
+#generating SelfSigned SSL
+
+15. sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout ./example.key -out ./example.crt
+
+16. sudo cp * /etc/nginx/ssl/
+
+
+=========================================================
+=== Optional if using Certificate from Azure KeyVault ===
+=========================================================
+Step 1: Convert a PKCS#12 file (.pfx .p12) containing a private key and certificates to PEM
+openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes
+
+Step 2: Extract .key from .pem
+openssl pkey -in cert.pem -out cert.key
+
+Step 3: Extract .crt from .pem
+openssl x509 -outform PEM -in cert.pem -out cert.crt
+
+
+=========================================================
+=== Optional if using Certificate from Azure KeyVault ===
+=========================================================
+sudo cat /etc/nginx/conf.d/example.com.conf
+server {
+listen 80;
+server_name example.com;
+return 301 https://$server_name$request_uri;
+}
+
+server {
+        #listen 443;
+        #server_name example.com;
+        listen 127.0.0.1:443 default_server;
+
+        #server_name "";
+
+        #ssl_certificate /etc/nginx/ssl/example.pem;
+        #ssl_certificate_key /etc/nginx/ssl/example.pem;
+
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
+
+        root /var/www/example.com;
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+sudo cat /etc/nginx/conf.d/example.com.conf.old.1
+server {
+        listen 443 ssl;
+        #server_name example.com;
+
+        server_name "";
+
+        #ssl_certificate /etc/nginx/ssl/example.pem;
+        #ssl_certificate_key /etc/nginx/ssl/example.pem;
+
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
+
+        root /var/www/example.com;
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+
+sudo cat /etc/nginx/conf.d/example.com.conf.old.0
+server {
+ listen 80;
+server_name example.com;
+ return 301 https://$server_name$request_uri;
+}
+
+server {
+        listen 443 ssl;
+        server_name example.com;
+
+        #ssl_certificate /etc/nginx/ssl/example.pem;
+        #ssl_certificate_key /etc/nginx/ssl/example.pem;
+
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
+
+        root /var/www/example.com;
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+================================================================================
+================================================================================
+
+
+sudo nginx -t #check the config
+sudo nginx -s reload #reloading config into nginx
+
+sudo systemctl reload nginx
+sudo systemctl status nginx
+
+================================================================================
+================================================================================
+
+#######################
+## Still not working ##
+#######################
+
+
+sudo mv example.com.conf example.com.conf.old
+
+sudo vim /etc/nginx/sites-available/default
+
+====================================
+==== add below config in default ===
+====================================
+server {
+#       listen 80;
+#       listen [::]:80;
+
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+#       server_name example.com;
+
+        ssl_certificate /etc/nginx/ssl/example.crt;
+        ssl_certificate_key /etc/nginx/ssl/example.key;
+
+
+#       root /var/www/example.com;
+        root /var/www/html;
+        index index.html index.htm;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+
+=== end of config ===
+
+sudo cp /var/www/example.com/index.html /var/www/html/
+
+sudo nginx -t 
+sudo nginx -s reload 
+
+sudo systemctl reload nginx
+sudo systemctl status nginx
+
+sudo netstat -tulnp | grep nginx | awk '{print $4}' | rev | cut -d':' -f1 | rev
+
+================================================================================
+================================================================================
+
+########################
+#### NOW ITS WORKING ###
+########################
+
+================================================================================
+================================================================================
+
+
+
+
