@@ -1,0 +1,523 @@
+
+
+
+---
+---
+---
+
+
+
+# =========================================
+
+# **📘 1. CLASSROOM HANDOUT — Git & GitHub Essentials**
+
+# =========================================
+
+**TITLE:** *Git & GitHub: Classroom Handout*
+**AUDIENCE:** Beginner–Intermediate
+**DURATION:** 2–3 lab sessions
+
+
+
+---
+---
+---
+
+
+
+# **Section 1 — What Is Git?**
+
+Git is a distributed version control system that lets teams track changes to files, collaborate, and review history.
+
+**Key Terms**
+
+* **Repository (repo)** – project folder tracked by Git
+* **Commit** – snapshot of project state
+* **Branch** – parallel line of development
+* **Merge** – bring branches together
+* **Remote** – online copy of your repo (GitHub)
+
+
+
+---
+---
+---
+
+
+
+# **Section 2 — Installing & Configuring Git**
+
+### Install Git
+
+* Windows/Mac/Linux: [https://git-scm.com](https://git-scm.com)
+
+### Configure identity
+
+```
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+
+
+---
+---
+---
+
+
+
+# **Section 3 — Creating & Managing Repositories**
+
+### Create a repo
+
+```
+mkdir project
+cd project
+git init
+```
+
+### Check status
+
+```
+git status
+```
+
+### Add + Commit
+
+```
+git add file.txt
+git commit -m "Add file.txt"
+```
+
+
+
+---
+---
+---
+
+
+
+# **Section 4 — Branching & Merging**
+
+### Create branch
+
+```
+git switch -c feature-1
+```
+
+### Merge
+
+```
+git switch main
+git merge feature-1
+```
+
+
+
+---
+---
+---
+
+
+
+# **Section 5 — Working With Remotes**
+
+### Add remote
+
+```
+git remote add origin https://github.com/user/repo.git
+```
+
+### Push / Pull
+
+```
+git push origin main
+git pull origin main
+```
+
+
+
+---
+---
+---
+
+
+
+# **Section 6 — Pull Requests on GitHub**
+
+1. Push your branch
+2. Open GitHub → **Pull Requests**
+3. Click **New Pull Request**
+4. Describe change
+5. Request review
+6. Merge after approval
+
+
+
+---
+---
+---
+
+
+
+# **Section 7 — Best Practices**
+
+* Use clear commit messages
+* Create feature branches for each change
+* Pull before you push
+* Avoid editing on `main`
+* Use `.gitignore`
+* Keep PRs small & focused
+
+
+
+---
+---
+---
+
+
+
+# =========================================
+
+# **📗 2. ADDITIONAL PRACTICE LABS (WITH SOLUTIONS)**
+
+# =========================================
+
+Below are **five extended labs** for practicing real-world situations.
+Each includes **objective, instructions, expected output, and solution**.
+
+---
+
+# **LAB A — Rewriting Commit History (Beginner → Intermediate)**
+
+### **Objective**
+
+Fix incorrect commit messages using interactive rebase.
+
+### **Instructions**
+
+1. Create three files and commit with poor messages like:
+
+   * “update”
+   * “stuff”
+   * “more stuff”
+2. Rewrite messages using rebase.
+
+### **Commands**
+
+```
+git rebase -i HEAD~3
+```
+
+### In the editor
+
+Change:
+
+```
+pick 84fd111 update
+```
+
+To:
+
+```
+reword 84fd111 update
+```
+
+### **Expected**
+
+Rewrite messages to:
+
+* “Add login page”
+* “Implement header UI”
+* “Fix CSS spacing”
+
+---
+
+## **Solution Summary**
+
+Interactive rebase opens a list of commits. Mark any commit as `reword`, save, enter the corrected message, and continue until rebase completes.
+
+
+
+---
+---
+---
+
+
+
+# **LAB B — Resolving Merge Conflicts in Multiple Files**
+
+### **Objective**
+
+Simulate a multi-file conflict.
+
+### **Instructions**
+
+1. Create branch `feature-text`.
+2. Modify `index.html` and `style.css`.
+3. Switch to main and modify the same lines differently.
+4. Merge.
+
+### **Expected Conflicts**
+
+Both files show `<<<<<<< HEAD` markers.
+
+### **Solution Summary**
+
+Remove conflict markers and manually choose the correct combined versions.
+Then:
+
+```
+git add .
+git commit
+```
+
+
+
+---
+---
+---
+
+
+
+# **LAB C — Forking & Contributing to an Open-Source Project**
+
+### **Objective**
+
+Perform an open-source style contribution workflow.
+
+### **Instructions**
+
+1. Fork a repo (e.g., a small JavaScript library).
+2. Clone your fork.
+3. Create branch: `fix-typo-docs`.
+4. Update documentation.
+5. Push and create PR.
+
+### **Expected**
+
+A GitHub PR with a clear summary and linked issue number.
+
+---
+
+## **Solution Summary**
+
+Students demonstrate:
+
+* Forking
+* Branching
+* Committing
+* Pushing
+* Opening PRs
+
+
+
+---
+---
+---
+
+
+
+# **LAB D — GitHub Issues + Project Boards**
+
+### **Objective**
+
+Track tasks using Issues & GitHub Projects.
+
+### **Instructions**
+
+1. Create an Issue titled “Add responsive nav bar”.
+2. Add labels: `enhancement`.
+3. Convert it to a task card on a Project Board.
+4. Link a pull request to auto-close the issue.
+
+### **Expected**
+
+PR description includes:
+
+```
+Closes #1
+```
+
+
+
+---
+---
+---
+
+
+
+# **LAB E — CI/CD with GitHub Actions (Beginner Pipeline)**
+
+### **Objective**
+
+Automate tests on push events.
+
+### **Instructions**
+
+1. Create `.github/workflows/test.yml`
+2. Add simple workflow:
+
+```
+name: Run Tests
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run test script
+        run: echo "All tests passed!"
+```
+
+---
+
+## **Expected**
+
+Workflow passes on GitHub → Actions tab.
+
+
+
+---
+---
+---
+
+
+
+---
+---
+---
+
+
+
+# =========================================
+
+# **📺 3. VIDEO-STYLE MINI LESSONS (SCRIPT + STORYBOARD)**
+
+# =========================================
+
+Each mini-lesson is structured like a YouTube tutorial.
+Use them as scripts, narration guides, or teaching slides.
+
+---
+
+# **🎬 MINI LESSON 1 — “What Is Git?” (2 minutes)**
+
+### **Scene 1 — Intro (00:00–00:10)**
+
+**Visual:** Developer typing, files changing.
+**Narration:**
+"Imagine working on a project where you can undo mistakes, experiment freely, and collaborate with anyone. That’s what Git lets you do."
+
+---
+
+### **Scene 2 — Core Ideas (00:10–01:00)**
+
+**Visual:** Diagrams of snapshots and branches.
+**Narration:**
+"Git tracks changes as snapshots called commits. You can create branches to try new features safely. And merge them when ready."
+
+---
+
+### **Scene 3 — Why GitHub? (01:00–01:40)**
+
+**Visual:** GitHub UI.
+**Narration:**
+"GitHub stores your repositories online so you can collaborate, review code, and automate workflows using GitHub Actions."
+
+---
+
+### **Scene 4 — Summary (01:40–02:00)**
+
+**Narration:**
+"Git is version control. GitHub is collaboration. Together, they power modern software development."
+
+---
+
+# **🎬 MINI LESSON 2 — “Your First Commit” (3 minutes)**
+
+### **Scene 1 — Create Project**
+
+Show terminal:
+
+```
+mkdir hello-git
+cd hello-git
+git init
+```
+
+### **Scene 2 — Add File**
+
+```
+echo "Hello Git" > hello.txt
+git add hello.txt
+git commit -m "Add greeting"
+```
+
+### **Narration:**
+
+"You’ve just created your first commit — your first snapshot."
+
+---
+
+# **🎬 MINI LESSON 3 — “Branches Explained Visually” (3 minutes)**
+
+### **Scene: Whiteboard animation**
+
+Narration:
+"Branches let you develop features independently. Think of them as alternate timelines for your project."
+
+Terminal demo:
+
+```
+git switch -c feature-login
+```
+
+"Now you’re safely editing without affecting main."
+
+---
+
+# **🎬 MINI LESSON 4 — “Push, Pull, and PRs” (4 minutes)**
+
+### **Visual timeline** showing remote vs local.
+
+Commands:
+
+```
+git push origin feature-login
+```
+
+Narration:
+"Once you push your changes, you can open a Pull Request on GitHub. PRs let teammates review your work before merging."
+
+---
+
+# **🎬 MINI LESSON 5 — “Fixing Merge Conflicts” (4 minutes)**
+
+Show conflict markers:
+
+```
+<<<<<<< HEAD
+Version A
+=======
+Version B
+>>>>>>> feature
+```
+
+Narration:
+"Conflicts happen when Git can’t auto-merge. Just pick the correct version, delete the markers, and commit the fix."
+
+---
+
+# =========================================
+
+# **✨ OPTIONAL EXTRAS I CAN GENERATE FOR YOU**
+
+# =========================================
+
+
+
+
+
+

@@ -1,0 +1,676 @@
+
+
+---
+---
+---
+
+
+
+# **GIT & GITHUB LAB MANUAL (BEGINNER TO ADVANCED)**
+
+*A practical, hands-on guide to version control and collaboration.*
+
+---
+---
+---
+
+
+
+# **TABLE OF CONTENTS**
+
+1. **Introduction**
+2. **Lab 1 — Installing Git**
+3. **Lab 2 — Configuring Git**
+4. **Lab 3 — Creating and Managing a Local Repository**
+5. **Lab 4 — Tracking Changes (add, commit, status, log)**
+6. **Lab 5 — .gitignore**
+7. **Lab 6 — Branching**
+8. **Lab 7 — Merging**
+9. **Lab 8 — Resolving Merge Conflicts**
+10. **Lab 9 — Working with Remote Repositories**
+11. **Lab 10 — Using GitHub (Cloning, Pushing, Pulling)**
+12. **Lab 11 — Forking Repos**
+13. **Lab 12 — Pull Requests**
+14. **Lab 13 — GitHub Workflow (Issues, Discussions, Code Review)**
+15. **Lab 14 — Collaboration Best Practices**
+16. **Appendix — Suggested Practice Projects**
+
+---
+---
+---
+
+
+
+
+# **INTRODUCTION**
+
+Git is a **distributed version control system** that lets developers track changes in code, collaborate safely, and maintain detailed project history. GitHub is a **cloud-based hosting service** that stores Git repositories and provides collaboration features like pull requests, issues, and CI/CD workflows.
+
+This manual takes you from **zero experience** to becoming **collaboration-ready**.
+
+---
+---
+---
+
+
+
+
+# **LAB 1 — Installing Git**
+
+## **Objective**
+
+Install Git on your system and verify the installation.
+
+## **Steps**
+
+### **Windows**
+
+1. Download Git from: [https://git-scm.com](https://git-scm.com)
+2. Run installer → keep defaults (recommended).
+3. Open **Git Bash**.
+
+### **Mac**
+
+```bash
+brew install git
+```
+
+### **Linux**
+
+```bash
+sudo apt install git
+```
+
+---
+
+## **Verify installation**
+
+```bash
+git --version
+```
+
+### Expected output
+
+```
+git version 2.45.1
+```
+
+---
+
+## **Common mistakes**
+
+❌ Running git commands in PowerShell with incorrect syntax
+✔ Use Git Bash or ensure Git is added to PATH.
+
+---
+
+## **Exercise**
+
+1. Install Git.
+2. Verify version.
+3. Open Git Bash or Terminal.
+
+---
+---
+---
+
+
+
+
+# **LAB 2 — Configuring Git**
+
+## **Objective**
+
+Set your identity for commits.
+
+## **Commands**
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global core.editor "code --wait"
+```
+
+### Check settings
+
+```bash
+git config --list
+```
+
+### Expected output (example)
+
+```
+user.name=John Doe
+user.email=johndoe@gmail.com
+```
+
+---
+
+## **Common mistakes**
+
+* Using a different email than your GitHub account (may cause identity mismatch).
+
+---
+
+## **Exercise**
+
+1. Configure Git with your name and email.
+2. Change default editor to VS Code.
+
+---
+---
+---
+
+
+
+# **LAB 3 — Creating and Managing a Local Repository**
+
+## **Objective**
+
+Create your first repo.
+
+### Create a project folder
+
+```bash
+mkdir my-first-repo
+cd my-first-repo
+```
+
+### Initialize a Git repository
+
+```bash
+git init
+```
+
+### Expected output
+
+```
+Initialized empty Git repository in /home/user/my-first-repo/.git/
+```
+
+### Check repo status
+
+```bash
+git status
+```
+
+---
+
+## **Common mistakes**
+
+* Running `git init` in the wrong folder.
+* Creating nested repos (avoid having `.git` folders inside each other).
+
+---
+
+## **Exercise**
+
+1. Create a new repository.
+2. Explore the hidden `.git` folder.
+
+---
+---
+---
+
+
+
+
+# **LAB 4 — Tracking Changes (add, commit, status, log)**
+
+## **Objective**
+
+Track files, commit changes, and view history.
+
+### Create a file
+
+```bash
+echo "Hello Git" > hello.txt
+```
+
+### Check status
+
+```bash
+git status
+```
+
+### Add file to staging
+
+```bash
+git add hello.txt
+```
+
+### Commit changes
+
+```bash
+git commit -m "Add hello.txt"
+```
+
+### View commit history
+
+```bash
+git log --oneline
+```
+
+### Expected output
+
+```
+a13c2b1 Add hello.txt
+```
+
+---
+
+## **Common mistakes**
+
+* Forgetting to stage files (`git add`) before committing.
+* vague commit messages like “fix stuff”.
+
+---
+
+## **Exercise**
+
+1. Create multiple files.
+2. Stage and commit each change separately.
+3. View commit history.
+
+---
+---
+---
+
+
+
+# **LAB 5 — Using .gitignore**
+
+## **Objective**
+
+Ignore files that should not be tracked.
+
+### Create `.gitignore`
+
+```
+*.log
+node_modules/
+.env
+```
+
+### Example
+
+```
+echo "API_KEY=123" > .env
+```
+
+### Check
+
+```bash
+git status
+```
+
+Expected: `.env` should not appear.
+
+---
+
+## **Common mistakes**
+
+* Wrong file name (`gitignore.txt` instead of `.gitignore`).
+* Adding .gitignore AFTER files are already tracked.
+
+---
+
+## **Exercise**
+
+1. Create two files: secret.env and debug.log
+2. Add patterns to ignore them.
+
+---
+---
+---
+
+
+
+# **LAB 6 — Branching**
+
+## **Objective**
+
+Create and switch between branches.
+
+### Create a branch
+
+```bash
+git branch feature-login
+```
+
+### Switch to it
+
+```bash
+git checkout feature-login
+```
+
+OR (modern)
+
+```bash
+git switch feature-login
+```
+
+### Create + switch in one step
+
+```bash
+git switch -c feature-payment
+```
+
+### View branches
+
+```bash
+git branch
+```
+
+---
+
+## **Common mistakes**
+
+* Editing files on the wrong branch.
+* Forgetting to switch back to `main`.
+
+---
+
+## **Exercise**
+
+1. Create three branches.
+2. Add a unique feature to each.
+
+---
+---
+---
+
+
+
+# **LAB 7 — Merging**
+
+## **Objective**
+
+Merge branches into main.
+
+### Switch to main
+
+```bash
+git switch main
+```
+
+### Merge
+
+```bash
+git merge feature-login
+```
+
+Expected output (fast-forward example):
+
+```
+Updating 1f41e2a..b701239
+Fast-forward
+```
+
+---
+
+## **Common mistakes**
+
+* Attempting to merge while on the wrong branch.
+* Not committing changes before merging.
+
+---
+
+## **Exercise**
+
+1. Merge one branch into main.
+2. Observe changes.
+
+---
+---
+---
+
+
+
+# **LAB 8 — Resolving Merge Conflicts**
+
+## **Objective**
+
+Fix conflicts manually.
+
+### Create conflicting change on main
+
+```
+Hello from main branch
+```
+
+### Create conflicting change on feature branch
+
+```
+Hello from feature branch
+```
+
+### Merge and see conflict
+
+```
+<<<<<<< HEAD
+Hello from main branch
+=======
+Hello from feature branch
+>>>>>>> feature
+```
+
+### Resolve manually:
+
+Choose the desired version and delete conflict markers.
+
+---
+
+## **Common mistakes**
+
+* Leaving conflict markers inside the file.
+* Forgetting to `git add` after resolving.
+
+---
+
+## **Exercise**
+
+1. Create an intentional conflict.
+2. Resolve it.
+3. Commit the fix.
+
+---
+---
+---
+
+
+# **LAB 9 — Working with Remote Repositories**
+
+## **Objective**
+
+Link local repo to GitHub.
+
+### Add remote
+
+```bash
+git remote add origin https://github.com/username/my-first-repo.git
+```
+
+### Verify
+
+```bash
+git remote -v
+```
+
+---
+
+## **Common mistakes**
+
+* Incorrect URL (SSH vs HTTPS mismatch).
+* Adding multiple origins.
+
+---
+
+## **Exercise**
+
+1. Create GitHub repo.
+2. Connect local repo.
+
+---
+---
+---
+
+
+
+# **LAB 10 — Cloning, Pushing, Pulling**
+
+## **Objective**
+
+Work with remote changes.
+
+### Clone
+
+```bash
+git clone https://github.com/user/project.git
+```
+
+### Push
+
+```bash
+git push origin main
+```
+
+### Pull
+
+```bash
+git pull origin main
+```
+
+---
+
+## **Common mistakes**
+
+* Forgetting to pull before pushing.
+* Merge conflicts after pulling.
+
+---
+
+## **Exercise**
+
+1. Clone a repo.
+2. Make a change.
+3. Push it.
+
+---
+---
+---
+
+# **LAB 11 — Forking (GitHub)**
+
+## **Objective**
+
+Work with someone else's repo.
+
+### Steps
+
+* Click **Fork** on GitHub.
+* Clone the fork.
+* Make changes.
+* Push to your fork.
+
+---
+
+## **Exercise**
+
+Fork a sample open-source repo and explore.
+
+---
+---
+---
+
+
+# **LAB 12 — Pull Requests**
+
+## **Objective**
+
+Submit changes to original repo.
+
+### Steps
+
+1. Push changes to a branch.
+2. On GitHub → **Pull Request** → **New PR**.
+3. Provide description.
+4. Submit.
+
+---
+
+## **Exercise**
+
+Create a PR in your own repo (main ← new branch).
+
+---
+---
+---
+
+# **LAB 13 — GitHub Workflows (Issues, Code Review, Actions)**
+
+## **Objective**
+
+Use GitHub’s collaboration tools.
+
+### Issues
+
+* Create a bug report issue.
+* Assign yourself.
+
+### Code Review
+
+* Review your own PR (comment, request changes).
+
+### GitHub Actions
+
+* Explore prebuilt workflows.
+
+---
+
+## **Exercise**
+
+1. Create an issue.
+2. Link it to a PR.
+
+---
+---
+---
+
+
+# **LAB 14 — Collaboration Best Practices**
+
+## **Essential guidelines**
+
+✔ Always create feature branches
+✔ Write clear commit messages
+✔ Pull frequently to avoid conflicts
+✔ Use `.gitignore` properly
+✔ Request code reviews
+✔ Never push directly to `main` on team projects
+
+---
+
+# **APPENDIX — PRACTICE PROJECTS**
+
+## **Beginner**
+
+* Personal notes repo
+* Simple calculator app
+
+## **Intermediate**
+
+* Portfolio website with branches for each new feature
+* Markdown documentation project
+
+## **Advanced**
+
+* Collaborative open-source contribution
+* Multi-branch large application
+* GitHub Actions CI pipeline
+
+---
+---
+---
+
+

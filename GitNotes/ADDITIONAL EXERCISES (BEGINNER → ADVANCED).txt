@@ -1,0 +1,235 @@
+
+
+
+
+---
+---
+---
+
+# **📘 PART 1 — ADDITIONAL EXERCISES (BEGINNER → ADVANCED)**
+
+These exercises are designed to reinforce concepts, provide hands-on practice, and simulate real-world collaboration workflows. They can be used for self-study, labs, homework, or assessments.
+
+---
+---
+---
+
+# **🔹 SECTION A — BEGINNER-LEVEL EXERCISES**
+
+---
+---
+---
+
+### **Exercise A1 — Initial Git Setup**
+
+**Objective:** Practice installation and configuration.
+**Tasks:**
+
+1. Install Git (if not already installed).
+2. Set your username, email, editor.
+3. Configure Git to show colored UI.
+4. Inspect configurations using `git config --list`.
+
+---
+---
+---
+
+### **Exercise A2 — Local Repository Basics**
+
+**Objective:** Learn file tracking basics.
+**Tasks:**
+
+1. Create a folder named `git-basics-lab`.
+2. Initialize a repo.
+3. Add two text files.
+4. Stage only one of them.
+5. Observe status differences.
+6. Commit the staged file.
+
+---
+---
+---
+
+### **Exercise A3 — First Commits**
+
+**Objective:** Get comfortable with staging & committing.
+**Tasks:**
+
+1. Modify one file.
+2. Check status.
+3. Stage changes.
+4. Commit with a meaningful message.
+5. Explore commit history using `git log --oneline`.
+
+---
+---
+---
+
+### **Exercise A4 — Ignoring Files**
+
+**Objective:** Create `.gitignore`.
+**Tasks:**
+
+1. Add a folder named `temp/`.
+2. Create `.gitignore` to exclude it.
+3. Verify using `git status`.
+
+---
+---
+---
+
+# **🔹 SECTION B — INTERMEDIATE-LEVEL EXERCISES**
+
+---
+---
+---
+
+### **Exercise B1 — Branching Strategy Starter**
+
+**Objective:** Practice basic branching.
+**Tasks:**
+
+1. Create a new branch: `feature/readme-update`.
+2. Add or modify README.md.
+3. Commit changes.
+4. Merge into `main` using fast-forward.
+
+---
+---
+---
+
+### **Exercise B2 — Merge Conflict Simulation**
+
+**Objective:** Resolve real conflicts.
+**Scenario:** Two developers modify the same line in `hello.txt`.
+**Tasks:**
+
+1. On `main`, change “Hello World” to “Hello from main branch”.
+2. Commit.
+3. Checkout branch `feature1`, change the same line.
+4. Attempt merging into main.
+5. Resolve the conflict manually.
+6. Commit resolution.
+
+---
+---
+---
+
+### **Exercise B3 — Undoing Mistakes**
+
+**Objective:** Practice reset, restore, revert.
+**Tasks:**
+
+1. Edit a file but do NOT stage it.
+2. Restore it.
+3. Make multiple commits.
+4. Use `git revert` to undo the middle commit.
+5. Use `git reflog` to inspect HEAD movement.
+
+---
+---
+---
+
+### **Exercise B4 — Pull vs Fetch**
+
+**Objective:** Understand pulling vs fetching.
+**Tasks:**
+
+1. Pull from a remote repo.
+2. Fetch without merging.
+3. Compare branches using `git diff main origin/main`.
+
+---
+---
+---
+
+# **🔹 SECTION C — ADVANCED-LEVEL EXERCISES**
+
+---
+---
+---
+
+### **Exercise C1 — Working with Forks & Pull Requests**
+
+**Objective:** Simulate open-source workflow.
+**Tasks:**
+
+1. Fork a public GitHub repo.
+2. Clone your fork.
+3. Create a new branch.
+4. Add a meaningful improvement.
+5. Push the branch to your fork.
+6. Create a Pull Request to the upstream repository.
+
+---
+---
+---
+
+### **Exercise C2 — Protected Branches & Code Reviews**
+
+**Objective:** Mimic enterprise collaboration.
+**Tasks:**
+
+1. Enable branch protection rules for `main`.
+2. Require PR reviews before merging.
+3. Simulate a teammate reviewing your code.
+4. Address review comments and update your PR.
+
+---
+---
+---
+
+### **Exercise C3 — Issues, Labels & Milestones**
+
+**Objective:** Practice project management in GitHub.
+**Tasks:**
+
+1. Create 3 issues with templates.
+2. Apply appropriate labels (`bug`, `enhancement`, `documentation`).
+3. Add them to a project board.
+4. Assign them to a milestone (`v1.0.0`).
+
+---
+---
+---
+
+### **Exercise C4 — Release Engineering**
+
+**Objective:** Automate software versioning & releases.
+**Tasks:**
+
+1. Create a git tag for `v1.1.0`.
+2. Push tags to GitHub.
+3. Draft a new GitHub release.
+4. Add release notes summarizing changes.
+
+---
+---
+---
+
+### **Exercise C5 — Implement a Workflow (Choose One)**
+
+**Options:**
+
+* Git Flow
+* GitHub Flow
+* Trunk-Based Development
+
+**Tasks:**
+
+1. Set up all required branches.
+2. Execute a complete feature cycle using the chosen workflow.
+3. Document the workflow in `WORKFLOW.md`.
+
+---
+---
+---
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,628 @@
+
+
+
+
+---
+---
+---
+
+
+
+# **🚀 Git & GitHub Mastery Lab Guide (Beginner → Advanced)**
+
+A complete practical guide to version control, collaboration, and workflows.
+
+
+
+---
+---
+---
+
+
+
+# **TABLE OF CONTENTS**
+
+1. **Prerequisites & Learning Objectives**
+2. **Module 1 — Installation & Initial Setup**
+3. **Module 2 — Understanding Repositories (Local & Remote)**
+4. **Module 3 — Staging, Committing & Inspecting History**
+5. **Module 4 — Branching, Merging & Merge Strategies**
+6. **Module 5 — Undoing Changes, Reset, Revert & Reflog**
+7. **Module 6 — GitHub Basics (Push, Pull, Fetch)**
+8. **Module 7 — Pull Requests, Reviews & Team Collaboration**
+9. **Module 8 — GitHub Issues, Projects & Releases**
+10. **Module 9 — SSH Keys, Authentication & Security**
+11. **Module 10 — Git Workflows (Git Flow, GitHub Flow, Trunk-Based)**
+12. **Practice Challenges & Capstone Lab**
+13. **Answer Keys (Optional)**
+
+
+
+---
+---
+---
+
+
+
+# **1. PREREQUISITES & LEARNING OBJECTIVES**
+
+## **Prerequisites**
+
+You should have:
+
+* Basic computer knowledge (terminal navigation helpful but not required)
+* GitHub account (free)
+* Laptop with administrator access
+
+## **Learning Objectives**
+
+By the end of this lab, you will be able to:
+
+* Install and configure Git on your machine
+* Manage local and remote repositories
+* Stage, commit, revert, and inspect file history
+* Branch, merge, resolve conflicts, and apply merge strategies
+* Collaborate on GitHub using pull requests and reviews
+* Track work with Issues and Projects
+* Use SSH keys, PATs, and secure Git authentication
+* Apply professional workflows (Git Flow, GitHub Flow, trunk-based)
+
+
+
+---
+---
+---
+
+
+
+# **2. MODULE 1 — INSTALLATION & INITIAL CONFIGURATION**
+
+## **Concept Explanation**
+
+Git is a distributed version control system.
+You track changes locally and synchronize with remote servers like GitHub.
+
+### **Diagram (text-described):**
+
+```
+[Working Directory] → [Staging Area] → [Local Repository] → [Remote Repository]
+     (edit files)        (add)            (commit)               (push/pull)
+```
+
+---
+
+## **🧪 LAB 1: Install Git**
+
+### **Windows**
+
+1. Download from `git-scm.com`
+2. Install with default settings (includes Git Bash)
+
+### **macOS**
+
+```bash
+brew install git
+```
+
+### **Linux**
+
+```bash
+sudo apt install git    # Debian/Ubuntu
+sudo dnf install git    # Fedora
+```
+
+---
+
+## **🧪 LAB 2: Configure Git**
+
+Run the following:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your.email@example.com"
+git config --global core.editor "code --wait"   # VS Code
+```
+
+### Verify:
+
+```bash
+git config --list
+```
+
+### Example Output:
+
+```
+user.name=John Doe
+user.email=john@example.com
+core.editor=code --wait
+```
+
+---
+
+# **3. MODULE 2 — REPOSITORIES (LOCAL & REMOTE)**
+
+## **Concept Explanation**
+
+* **Local repo** lives on your machine
+* **Remote repo** lives on GitHub
+* Git connects them via URLs (HTTPS or SSH)
+
+---
+
+## **🧪 LAB 3: Create a Local Repository**
+
+```bash
+mkdir myproject
+cd myproject
+git init
+```
+
+**Output:**
+
+```
+Initialized empty Git repository in /myproject/.git/
+```
+
+---
+
+## **🧪 LAB 4: Connect to a Remote Repository**
+
+1. Create a repo on GitHub (no README)
+2. Run:
+
+```bash
+git remote add origin https://github.com/<username>/myproject.git
+git remote -v
+```
+
+
+
+---
+---
+---
+
+
+
+# **4. MODULE 3 — STAGING, COMMITTING & HISTORY**
+
+## **Concept Explanation**
+
+Git tracks changes in three spaces:
+
+1. **Working Directory** – your files
+2. **Staging Area** – what will be committed
+3. **Local Repository** – committed history
+
+---
+
+## **🧪 LAB 5: Stage and Commit Changes**
+
+### Step 1: Create a file
+
+```bash
+echo "Hello World" > hello.txt
+```
+
+### Step 2: Stage it
+
+```bash
+git add hello.txt
+```
+
+### Step 3: Commit
+
+```bash
+git commit -m "Add hello.txt"
+```
+
+---
+
+## **🧪 LAB 6: Inspect Git History**
+
+```bash
+git log --oneline --graph --decorate
+```
+
+Example Output:
+
+```
+* f5a1b3c (HEAD -> main) Add hello.txt
+```
+
+
+
+---
+---
+---
+
+
+
+# **5. MODULE 4 — BRANCHING, MERGING & MERGE STRATEGIES**
+
+## **Concept Explanation**
+
+Branches allow isolated development.
+
+### Text Diagram:
+
+```
+main ---A---B------M----D
+             \----C---/
+              feature/login
+```
+
+---
+
+## **🧪 LAB 7: Create and Switch Branches**
+
+```bash
+git checkout -b feature1
+```
+
+Edit a file:
+
+```bash
+echo "Feature change" >> hello.txt
+git add hello.txt
+git commit -m "Add feature1 change"
+```
+
+---
+
+## **🧪 LAB 8: Merge Branches**
+
+Return to main:
+
+```bash
+git checkout main
+git merge feature1
+```
+
+---
+
+## **Merge Strategies Explained**
+
+* **Fast-forward** (no conflicts)
+* **3-way merge** (new merge commit)
+* **Squash merge** (condenses history)
+
+---
+
+## **🧪 LAB 9: Intentional Merge Conflict**
+
+1. Edit *hello.txt* differently on `main` and `feature1`
+2. Attempt merge:
+
+```bash
+git merge feature1
+```
+
+You will see:
+
+```
+CONFLICT (content): Merge conflict in hello.txt
+```
+
+Resolve file manually, then:
+
+```bash
+git add hello.txt
+git commit
+```
+
+
+
+---
+---
+---
+
+
+
+# **6. MODULE 5 — UNDOING CHANGES, RESET, REVERT & REFLOG**
+
+## **Concept Explanations**
+
+* **git checkout -- file** → discard uncommitted changes
+* **git reset** → move branch pointer
+* **git revert** → creates a new commit that undoes another
+* **git reflog** → history of all HEAD movements
+
+---
+
+## **🧪 LAB 10: Practice Resetting**
+
+### Restore file:
+
+```bash
+git restore hello.txt
+```
+
+### Soft reset (keep changes):
+
+```bash
+git reset --soft HEAD~1
+```
+
+### Hard reset (dangerous):
+
+```bash
+git reset --hard HEAD~1
+```
+
+---
+
+## **🧪 LAB 11: Reflog**
+
+```bash
+git reflog
+```
+
+Example:
+
+```
+a13e213 HEAD@{1}: commit: Add feature1 change
+bd1c821 HEAD@{2}: checkout: moving from main to feature1
+```
+
+
+
+---
+---
+---
+
+
+
+# **7. MODULE 6 — GITHUB REMOTE OPERATIONS**
+
+## **🧪 LAB 12: Push Code to GitHub**
+
+```bash
+git push -u origin main
+```
+
+---
+
+## **🧪 LAB 13: Fetch vs Pull**
+
+```bash
+git fetch origin
+git pull origin main
+```
+
+**Explanation:**
+
+* **fetch** downloads but does not merge
+* **pull** = fetch + merge
+
+
+
+---
+---
+---
+
+
+
+# **8. MODULE 7 — PULL REQUESTS, REVIEWS & COLLABORATION**
+
+## **Concept Explanation**
+
+Pull Requests (PRs) allow team members to:
+
+* Review code
+* Discuss changes
+* Run CI
+* Merge into protected branches
+
+---
+
+## **🧪 LAB 14: Create a Pull Request**
+
+1. Push a feature branch:
+
+```bash
+git push -u origin feature1
+```
+
+2. Open GitHub → Create Pull Request
+3. Add reviewers
+4. Perform code review
+5. Merge via "Squash", "Rebase", or "Merge commit"
+
+---
+
+## **Realistic Team Conflict Scenario**
+
+* Developer A edits the same line as Developer B
+* GitHub blocks merge
+* A resolves conflict via the web editor
+* PR merges successfully
+
+
+
+---
+---
+---
+
+
+
+# **9. MODULE 8 — ISSUES, PROJECTS & RELEASES**
+
+## **🧪 LAB 15: Create an Issue**
+
+Include:
+
+* Title
+* Description
+* Labels
+* Assignees
+
+---
+
+## **🧪 LAB 16: Create a GitHub Project Board**
+
+Columns:
+
+* To Do
+* In Progress
+* Done
+
+Add Issues to workflow.
+
+---
+
+## **🧪 LAB 17: Publish a Release**
+
+1. Go to "Releases"
+2. Click "Draft new release"
+3. Tag as `v1.0.0`
+4. Publish
+
+
+
+---
+---
+---
+
+
+
+# **10. MODULE 9 — SSH KEYS, AUTHENTICATION & SECURITY**
+
+## **Concept Explanation**
+
+SSH keys allow passwordless, secure Git operations.
+
+---
+
+## **🧪 LAB 18: Generate SSH Key**
+
+```bash
+ssh-keygen -t ed25519 -C "your.email@example.com"
+```
+
+Add to GitHub → Settings → SSH Keys.
+
+---
+
+## **🧪 LAB 19: Test SSH**
+
+```bash
+ssh -T git@github.com
+```
+
+Output:
+
+```
+Hi username! You've successfully authenticated.
+```
+
+
+
+---
+---
+---
+
+
+
+# **11. MODULE 10 — GIT WORKFLOWS**
+
+## **1. Git Flow**
+
+Branches:
+
+* main
+* develop
+* feature/*
+* release/*
+* hotfix/*
+
+## **2. GitHub Flow**
+
+* Always branch from main
+* Frequent merges via PRs
+* Ideal for CI/CD
+
+## **3. Trunk-Based Development**
+
+* Small, frequent commits
+* Feature flags
+
+### **Diagram (text):**
+
+```
+[main] ← small branches ← merged daily
+```
+
+
+
+---
+---
+---
+
+
+
+# **12. PRACTICE CHALLENGES**
+
+### **Challenge 1:**
+
+Create a repo, add files, make 5 commits, inspect history.
+
+### **Challenge 2:**
+
+Make two feature branches and merge them into main with conflicts.
+
+### **Challenge 3:**
+
+Configure SSH, fork a repo, submit a PR.
+
+### **Challenge 4:**
+
+Implement GitHub Flow on a small project.
+
+### **Challenge 5:**
+
+Create Issues, a Project Board, and a Release.
+
+
+---
+---
+---
+
+
+# **13. END-OF-MODULE QUIZZES**
+
+## **Sample Questions:**
+
+### **1. What is the difference between fetch and pull?**
+
+A) fetch merges automatically
+B) fetch downloads only
+C) pull downloads and merges
+Correct: B & C
+
+### **2. Which command shows HEAD history?**
+
+* `git reflog`
+
+### **3. Which merge strategy creates a single commit that summarizes the branch?**
+
+* Squash merge
+
+### **4. What command discards uncommitted file changes?**
+
+* `git restore <file>`
+
+### **5. What is the purpose of a pull request?**
+
+* Code review, discussion, automated checks, and merging
+
+
+
+---
+---
+---
+
+
+
+
+
+
